@@ -10,6 +10,7 @@ import ProductList from "../features/ProductList/components/ProductList";
       path: "/",
       element: <ProductList />,
     },
+    
   ]);
 
 const Router:React.FC=()=>{
