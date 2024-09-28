@@ -1,17 +1,13 @@
 import { useParams } from 'react-router-dom';
 import { useProductbyId } from '../hooks/useProductbyId';
-
-
+import { useCartStore } from '../../Cart/store/cartStore';
 
 const ProductDetail: React.FC = () => {
-    const { id } = useParams<{ id: string }>();
-    console.log();
-    
-
+    const { id } = useParams<{ id: string }>()
     const { loading, error, product} = useProductbyId(id!)
-
-if (loading) return <div>....loading</div>
-if (error) return `Error! ${error}`;
+    const addToCart = useCartStore(state => state.addToCart);
+    if (loading) return <div>....loading</div>
+    if (error) return `Error! ${error}`;
   
 
     return (
@@ -28,7 +24,7 @@ if (error) return `Error! ${error}`;
               {product.variants.edges[0].node.price.amount}
             </p>
             <button
-              onClick={() => {}}
+              onClick={()=>{addToCart(product)}}
               className="mt-2 bg-black text-white py-1 px-3 rounded"
             >
               Add to cart

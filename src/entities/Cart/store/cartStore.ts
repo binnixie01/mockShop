@@ -1,11 +1,50 @@
-import { create } from 'zustand'
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import { ProductID } from "../../Product/model/productTypes";
+import { CartItem } from "../model/cartTypes";
 
 type Store = {
-  count: number
-  inc: () => void
-}
+  cartItems: CartItem[];
+  addToCart: (product: ProductID) => void;
+  removeFromCart: (productId: string) => void;
+  clearCart: () => void;
+};
 
-export const useCartStore = create<Store>()((set) => ({
-  count: 1,
-  inc: () => set((state) => ({ count: state.count + 1 })),
-}))
+export const useCartStore = create<Store>()(
+  persist(
+    (set, get) => ({
+      cartItems: [],
+      addToCart: (product: ProductID) => {
+        const existingItem = get().cartItems.find(
+          (item) => item.id === product.id
+        );
+        if (existingItem) {
+          set({
+            cartItems: get().cartItems.map((item) =>
+              item.id === product.id
+                ? { ...item, quantity: item.quantity + 1 }
+                : item
+            ),
+          }); console.log(get().cartItems);
+        } else {
+          set({
+            cartItems: [...get().cartItems, { ...product, quantity: 1 }],
+          });
+          console.log(get().cartItems);
+        }
+        
+      },
+      removeFromCart: (productId: string) => {
+        set({
+          cartItems: get().cartItems.filter((item) => item.id !== productId),
+        });
+      },
+      clearCart: () => {
+        set({ cartItems: [] });
+      },
+    }),
+    {
+      name: "cart-storage"
+    }
+  )
+);
