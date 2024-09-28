@@ -18,3 +18,15 @@ export interface ProductCardProps {
       };
       variants:{edges:Variant[]}
   }}
+
+export interface ProductID {
+  id:string;
+      title:string;
+      description:string;
+      featuredImage: {
+        id:string;
+        url:string;
+      };
+}
+
+// export interface 

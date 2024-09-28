@@ -3,7 +3,6 @@ import { GET_PRODUCTS } from "../api/getProducts";
 
 export const useProducts = () => {
     const { loading, error, data } = useQuery(GET_PRODUCTS);
-    // console.log(data?.products?.edges);
     
     return {
       loading,
@@ -11,3 +10,4 @@ export const useProducts = () => {
       products: data?.products?.edges || []
     };
   };
+

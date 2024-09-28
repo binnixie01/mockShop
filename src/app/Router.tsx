@@ -4,11 +4,16 @@ import {
     RouterProvider,
   } from "react-router-dom";
 import ProductList from "../features/ProductList/components/ProductList";
+import ProductDetail from "../entities/Product/components/ProductDetail";
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: <ProductList />,
+    },
+    {
+      path: "/product/:id",
+      element: <ProductDetail />,
     },
     
   ]);
