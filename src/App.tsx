@@ -1,18 +1,21 @@
-import {ReactNode } from 'react'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-interface AppProps {
-  children: ReactNode;
-}
-const App:React.FC<AppProps>=({children})=>{
-  
+import { Route, Routes } from "react-router-dom";
+import ProductDetail from "./entities/Product/components/ProductDetail";
+import ProductList from "./features/ProductList/components/ProductList";
+import ShoppingCart from "./features/ShoppingCart/components/ShoppingCart";
+import Header from "./app/components/Header";
 
+const App: React.FC = () => {
   return (
-    <><div className='flex justify-between px-5 mt-4'>
-    <div className='text-5xl'>Mock Shop</div><div><button><ShoppingCartIcon/></button></div></div>
-    <main>{children}</main>
-     
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<ProductList />}/>
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/cart" element={<ShoppingCart />} />
+      
+      </Routes>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

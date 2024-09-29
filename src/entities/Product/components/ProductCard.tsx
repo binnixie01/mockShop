@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ProductCardProps } from "../model/productTypes";
 
+
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div>
@@ -19,12 +20,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               {product.node.variants.edges[0].node.price.currencyCode}{" "}
               {product.node.variants.edges[0].node.price.amount}
             </p>
-            <button
-              onClick={() => {}}
-              className="mt-2 bg-black text-white py-1 px-3 rounded"
-            >
-              Add to cart
-            </button>
+            
           </div>
         </div>
       </Link>

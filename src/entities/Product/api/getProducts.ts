@@ -26,8 +26,8 @@ export const GET_PRODUCT_BY_ID = gql`
   }}
 `;
 export const GET_PRODUCTS = gql`
- query getProduct{
-    products(first: 20) {
+ query getProduct($sortBy:ProductSortKeys!,$reverse:Boolean!){
+    products(first: 20, sortKey:$sortBy ,reverse:$reverse) {
       edges {
         node {
           id

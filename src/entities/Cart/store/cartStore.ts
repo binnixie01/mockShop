@@ -7,6 +7,7 @@ type Store = {
   cartItems: CartItem[];
   addToCart: (product: ProductID) => void;
   removeFromCart: (productId: string) => void;
+  updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
 };
 
@@ -37,6 +38,14 @@ export const useCartStore = create<Store>()(
       removeFromCart: (productId: string) => {
         set({
           cartItems: get().cartItems.filter((item) => item.id !== productId),
+        });
+      },
+      updateQuantity: (productId: string, quantity: number) => {
+        if (quantity < 1) return;
+        set({
+          cartItems: get().cartItems.map((item) =>
+            item.id === productId ? { ...item, quantity } : item
+          ),
         });
       },
       clearCart: () => {

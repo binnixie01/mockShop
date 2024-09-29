@@ -36,4 +36,3 @@ export interface ProductID {
   variants:{edges:Variant[]}
 }
 
-// export interface

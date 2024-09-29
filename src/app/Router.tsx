@@ -3,17 +3,22 @@ import {
     createBrowserRouter,
     RouterProvider,
   } from "react-router-dom";
-import ProductList from "../features/ProductList/components/ProductList";
 import ProductDetail from "../entities/Product/components/ProductDetail";
+import ShoppingCart from "../features/ShoppingCart/components/ShoppingCart";
+import Home from "./Home";
 
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <ProductList />,
+      element: <Home />,
     },
     {
       path: "/product/:id",
       element: <ProductDetail />,
+    },
+    {
+      path: "/cart",
+      element: <ShoppingCart />,
     },
     
   ]);

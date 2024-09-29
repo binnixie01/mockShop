@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useProductbyId } from '../hooks/useProductbyId';
 import { useCartStore } from '../../Cart/store/cartStore';
+import { toast } from 'react-toastify';
 
 const ProductDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>()
@@ -24,7 +25,7 @@ const ProductDetail: React.FC = () => {
               {product.variants.edges[0].node.price.amount}
             </p>
             <button
-              onClick={()=>{addToCart(product)}}
+              onClick={()=>{addToCart(product);toast.success(`${product.title} added to cart!`);}}
               className="mt-2 bg-black text-white py-1 px-3 rounded"
             >
               Add to cart
