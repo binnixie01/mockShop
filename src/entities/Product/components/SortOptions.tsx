@@ -18,6 +18,8 @@ const SortOptions: React.FC = () => {
       >
         <option value="PRICE_ASC">Price: Low to High</option>
         <option value="PRICE_DSC">Price: High to Low</option>
+        <option value="TITLE_ASC">Title: A to Z</option>
+        <option value="TITLE_DESC">Title: Z to A</option>
       </select>
     </div>
   );

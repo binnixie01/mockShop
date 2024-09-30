@@ -5,3 +5,9 @@ export interface Sorting {
     sortBy: SortOption;
   }
     
+  export interface PriceRange {
+    min: number|null;
+    max: number|null;
+  }export interface Filters {
+    priceRange: PriceRange;
+  }

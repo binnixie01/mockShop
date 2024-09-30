@@ -3,9 +3,13 @@ import { GET_PRODUCTS } from "../api/getProducts";
 import { useFiltersStore } from "../store/filterStore";
 
 export const useProducts = () => {
-  const { sorting } = useFiltersStore();
+  const { sorting,filters} = useFiltersStore();
+  let query=""
   let sortby
   let rev= false
+  if(filters.priceRange.max){
+    query=`variants.price:>${filters.priceRange.min} variants.price:<${filters.priceRange.max}`
+  }
   switch (sorting.sortBy) {
     case 'PRICE_ASC':
       sortby='PRICE';
@@ -25,7 +29,7 @@ export const useProducts = () => {
     sortby='TITLE'
   }
   
-    const { loading, error, data } = useQuery(GET_PRODUCTS, { variables: { sortBy:sortby,reverse:rev }, });
+    const { loading, error, data } = useQuery(GET_PRODUCTS, { variables: { query:query,sortBy:sortby,reverse:rev }, });
     
     return {
       loading,
