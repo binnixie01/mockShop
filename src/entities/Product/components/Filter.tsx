@@ -1,7 +1,7 @@
 import React,{ useState, useEffect } from 'react'
 import { useFiltersStore } from '../store/filterStore';
 
-const Filter = () => {
+const Filter:React.FC = () => {
     const { filters, setPriceRange } = useFiltersStore();
     const [min, setMin] = useState(filters.priceRange.min);
     const [max, setMax] = useState(filters.priceRange.max);

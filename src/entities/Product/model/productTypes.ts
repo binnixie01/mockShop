@@ -7,7 +7,7 @@ interface Variant {
   };
 }
 
-export interface ProductCardProps {
+export interface ProductCardType {
   node: {
     id: string;
     title: string;
@@ -18,6 +18,9 @@ export interface ProductCardProps {
     };
     variants: { edges: Variant[] };
   };
+}
+export interface ProductCardProps{
+  product:ProductCardType;
 }
 
 interface Edges{
