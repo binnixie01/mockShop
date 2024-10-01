@@ -10,11 +10,11 @@ const SortOptions: React.FC = () => {
   };
 
   return (
-    <div className="p-4 border rounded mb-4 bg-white shadow">
-      <h3 className="text-lg font-semibold mb-2">Sort By</h3>
+    <div className="flex rounded bg-white shadow h-6 justify-center gap-4">
+      <h3 className="pl-2">Sort By</h3>
       <select
         onChange={handleSortChange}
-        className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="px-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
         <option value="PRICE_ASC">Price: Low to High</option>
         <option value="PRICE_DSC">Price: High to Low</option>

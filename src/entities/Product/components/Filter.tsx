@@ -26,44 +26,44 @@ const Filter:React.FC = () => {
       };
 
   return (
-    <div className="p-4 border rounded mb-4 bg-white shadow">
-      <h3 className="text-lg font-semibold mb-2">Price Range</h3>
-      <div className="flex flex-col space-y-2">
-        <div className="flex items-center space-x-2">
-          <label htmlFor="min-price" className="w-16">Min:</label>
+    <div className="">
+      <h3 className="">Price Range</h3>
+      <div className="flex flex-col">
+        <div className="flex items-center">
+          <label htmlFor="min-price" className="w-10">Min:</label>
           <input
             id="min-price"
             type="number"
             value={min!}
             onChange={(e) => setMin(Number(e.target.value))}
-            className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="rounded-md w-28 px-2"
             placeholder="0"
             min={0}
           />
         </div>
-        <div className="flex items-center space-x-2">
-          <label htmlFor="max-price" className="w-16">Max:</label>
+        <div className="flex items-center">
+          <label htmlFor="max-price" className="w-10">Max:</label>
           <input
             id="max-price"
             type="number"
             value={max!}
             onChange={(e) => setMax(Number(e.target.value))}
-            className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="rounded-md w-28 px-2"
             placeholder="1000"
             min={0}
           />
         </div>
       </div>
-      <div className="mt-4 flex space-x-2">
+      <div className=" flex justify-between">
         <button
           onClick={handleApply}
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
+          className="bg-blue-500 text-white rounded px-2 hover:bg-blue-600"
         >
           Apply
         </button>
         <button
           onClick={handleReset}
-          className="w-full bg-gray-500 text-white py-2 rounded hover:bg-gray-600 transition"
+          className="bg-gray-500 text-whiterounded px-2 hover:bg-gray-600"
         >
           Reset
         </button>

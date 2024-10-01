@@ -1,6 +1,7 @@
 import React from 'react'
 import { CartItem } from '../model/cartTypes';
 import { toast } from 'react-toastify';
+import { motion } from 'framer-motion';
 
 interface CartItemProps {
   item: CartItem;
@@ -23,7 +24,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ item, onRemove, onUpdateQu
     };
   
     return (
-      <li className="flex items-center justify-between p-4 border-b">
+      <li className="flex items-center justify-between bg-slate-400 rounded-xl mt-4 p-2">
       <div className="flex items-center">
         <img
           src={item.images.edges[0].node.url}
@@ -31,7 +32,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ item, onRemove, onUpdateQu
           className="w-16 h-16 object-cover rounded"
         />
         <div className="ml-4">
-          <h4 className="text-lg font-semibold">{item.title}</h4>
+          <h4 className="text-lg">{item.title}</h4>
           <p className="mt-1 text-gray-600">
               {item.variants.edges[0].node.price.currencyCode}{" "}
               {item.variants.edges[0].node.price.amount}
@@ -49,9 +50,9 @@ const CartItemComponent: React.FC<CartItemProps> = ({ item, onRemove, onUpdateQu
       </div>
       <div className="flex items-center">
         <span className="mr-4">{item.variants.edges[0].node.price.currencyCode}{" "} {subtotal}</span>
-        <button onClick={() => {onRemove(item.id); toast.info(`${item.title} is removed!)`)}} className="bg-red-500 text-white px-3 py-1 rounded">
+        <motion.button whileHover={{scale:1.1}} whileTap={{scale:0.9}} onClick={() => {onRemove(item.id); toast.info(`${item.title} is removed!)`)}} className="bg-red-500 text-white px-3 py-1 rounded">
           Remove
-        </button>
+        </motion.button>
       </div>
     </li>
     );

@@ -2,6 +2,7 @@ import React from "react";
 import { toast } from "react-toastify";
 import { useCartStore } from "../../../entities/Cart/store/cartStore";
 import CartItemComponent from "../../../entities/Cart/components/CartItem";
+import { motion } from 'framer-motion';
 const ShoppingCart: React.FC = () => {
   const { cartItems, removeFromCart, updateQuantity, clearCart } =
     useCartStore();
@@ -29,7 +30,7 @@ const ShoppingCart: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
+      <h2 className="text-2xl mb-4 bg-black/80 rounded-xl px-2 mt-4 text-white w-40">Your Cart</h2>
       <ul>
         {cartItems.map((item) => (
           <CartItemComponent
@@ -43,10 +44,10 @@ const ShoppingCart: React.FC = () => {
       <div className="mt-6 flex justify-between items-center">
         <span className="text-xl font-semibold">Total:{"  CAD "}{total}</span>
         <div>
-          <button onClick={handleClearCart} className="bg-red-500 text-white mr-4 px-3 py-1 rounded">
+          <motion.button whileHover={{scale:1.1}} whileTap={{scale:0.9}} onClick={handleClearCart} className="bg-red-500 text-white mr-4 px-3 py-1 rounded">
             Clear Cart
-          </button>
-          <button className="bg-green-500 text-white px-3 py-1 rounded">Proceed to Checkout</button>
+          </motion.button>
+          <motion.button whileHover={{scale:1.1}} whileTap={{scale:0.9}} className="bg-black text-white px-3 py-1 rounded">Proceed to Checkout</motion.button>
         </div>
       </div>
     </div>
