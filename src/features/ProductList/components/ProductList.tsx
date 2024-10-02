@@ -41,7 +41,7 @@ const ProductList: React.FC = () => {
         <CircularProgress />
       </div>
     );
-  if (error) return `Error! ${error}`;
+  if (error) return <div className="absolute right-1/2 top-1/2">Product Out Of Stock</div>;
   return (
     <main>
       <div
