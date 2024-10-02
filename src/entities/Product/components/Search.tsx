@@ -43,17 +43,17 @@ const Search = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
   return (
-    <div ref={searchRef} className="w-80">
-      <input className="h-8 rounded text-gray-950 px-4 hover:ring-2 hover:ring-blue-400"
+    <div ref={searchRef} role="searchbox" aria-label="Search products by title" className="md:w-80 w-40">
+      <input className="md:h-8 h-6 rounded text-gray-950 px-4 hover:ring-2 hover:ring-blue-400 w-full"
         type="text"
         placeholder="Search by title"
         onChange={handleSearch}
       />
       {isSearchOpen &&
-        <ul role="list" className="rounded absolute z-10 divide-y divide-slate-200 bg-slate-50">
+        <ul role="list" className="rounded absolute z-10 divide-y divide-slate-200 bg-slate-50 flex flex-col justify-center">
           {searchResults.map((product) => (
           
-          <li key={product.node.id} className="">
+          <li key={product.node.id} className="hover:bg-slate-200">
             <Link to={`/product/${encodeURIComponent(product.node.id)}`}>
             <div className="flex">
               <img
@@ -61,7 +61,7 @@ const Search = () => {
                 alt={product.node.title}
                 className="w-10 object-cover"
               />
-              <div className="text-lg">{product.node.title}</div></div></Link>
+              <div className="text-xs">{product.node.title}</div></div></Link>
             </li>
             
           ))}

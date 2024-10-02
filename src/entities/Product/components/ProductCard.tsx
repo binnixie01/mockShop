@@ -1,18 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ProductCardProps } from "../model/productTypes";
-import { motion } from 'framer-motion';
-
+import { motion } from "framer-motion";
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
-    <motion.div variants={{hidden:{opacity:0}, show:{opacity:1}}} whileHover={{scale:1.1,backgroundColor:'#64748b', color:'black'}} className="rounded-xl" >
-      <Link to={`/product/${encodeURIComponent(product.node.id)}`}>
+    <motion.div
+      role="article"
+      variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}
+      whileHover={{ scale: 1.1, backgroundColor: "#64748b", color: "black" }}
+      className="rounded-xl"
+    >
+      <Link
+        to={`/product/${encodeURIComponent(product.node.id)}`}
+        role="link"
+        aria-label={`View details of ${product.node.title}`}
+      >
         <div className=" p-4 shadow-md">
           <img
             src={product.node.featuredImage.url}
             alt={product.node.title}
-            className="w-full object-cover rounded-lg"
+            className="w-full object-cover rounded-lg" aria-hidden="true"
           />
           <h3 className="mt-2 text-lg ">{product.node.title}</h3>
 
@@ -21,7 +29,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               {product.node.variants.edges[0].node.price.currencyCode}{" "}
               {product.node.variants.edges[0].node.price.amount}
             </p>
-            
           </div>
         </div>
       </Link>

@@ -3,20 +3,21 @@ import { useProductbyId } from '../hooks/useProductbyId';
 import { useCartStore } from '../../Cart/store/cartStore';
 import { toast } from 'react-toastify';
 import { motion } from 'framer-motion';
+import { CircularProgress } from '@mui/material';
 
 const ProductDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>()
     const { loading, error, product} = useProductbyId(id!)
     const addToCart = useCartStore(state => state.addToCart);
-    if (loading) return <div>....loading</div>
+    if (loading) return <div className="absolute left-1/2 top-1/2"><CircularProgress /></div>;
     if (error) return `Error! ${error}`;
-  console.log(product.description);
   
 
     return (
-      <div className="w-4/5 mx-auto flex flex-col md:flex-row bg-slate-100 rounded-xl mt-20 p-4">
+      <div className="w-4/5 mx-auto flex flex-col md:flex-row bg-slate-100 rounded-xl mt-20 p-4 md:text-base text-xs" role="article" // Indicates that this is an article or product detail
+      aria-labelledby={`product-title-${product.id}`}>
         <div className="md:w-1/4">
-          <img src={product.images.edges[0].node.url} alt={product.title} className="w-full rounded-xl  h-auto object-cover" />
+          <img src={product.images.edges[0].node.url} alt={product.title} className="w-full rounded-xl  h-auto object-cover" aria-hidden="true"/>
         </div>
         <div className="md:w-1/2 md:pl-8">
           <h2 className="text-2xl font-bold">{product.title}</h2>

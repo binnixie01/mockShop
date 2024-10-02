@@ -10,7 +10,7 @@ const SortOptions: React.FC = () => {
   };
 
   return (
-    <div className="flex rounded bg-white shadow h-6 justify-center gap-4">
+    <div className="flex rounded bg-white shadow h-6 justify-center gap-4 md:text-base text-xs items-center ">
       <h3 className="pl-2">Sort By</h3>
       <select
         onChange={handleSortChange}
