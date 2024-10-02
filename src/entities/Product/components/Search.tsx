@@ -13,13 +13,11 @@ const Search = () => {
     keys: ["node.title"],
   };
   const [searchResults, setSearchResults] = useState<ProductCardType[]>([]);
-  const [searchValue,setSearchValue]=useState("")
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const fuse = new Fuse<ProductCardType>(products, options);
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { value }: { value: string } = event.target;
-    setSearchValue(value)
 
     if (value) {
       setIsSearchOpen(true);
